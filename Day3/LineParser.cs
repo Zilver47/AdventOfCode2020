@@ -17,13 +17,13 @@ namespace Day3
     {
         public InputLine(string line)
         {
-            Tiles = new List<bool>();
+            Columns = new List<bool>();
             foreach (var character in line)
             {
-                Tiles.Add(character == '#');
+                Columns.Add(character == '#');
             }
         }
 
-        public List<bool> Tiles { get; set; }
+        public List<bool> Columns { get; set; }
     }
 }
