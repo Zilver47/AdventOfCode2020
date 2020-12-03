@@ -17,11 +17,13 @@ namespace Day3
     {
         public InputLine(string line)
         {
-            Policy = line.Split(':')[0];
-            Password = line.Split(':')[1];
+            Tiles = new List<bool>();
+            foreach (var character in line)
+            {
+                Tiles.Add(character == '#');
+            }
         }
 
-        public string Policy { get; set; }
-        public string Password { get; set; }
+        public List<bool> Tiles { get; set; }
     }
 }

@@ -6,51 +6,74 @@ namespace Day3
 {
     public class One : IAnswerGenerator
     {
-        private IEnumerable<InputLine> _input;
+        private List<InputLine> _input;
 
         public One(IEnumerable<string> input)
         {
-            _input = new LineParser().Parse(input);
+            _input = new LineParser().Parse(input).ToList();
+
+            foreach (var row in _input)
+            {
+                foreach (var tile in row.Tiles)
+                {
+                    //Console.Write(tile ? "#" : ".");
+                }
+
+                //Console.WriteLine("");
+            }
         }
 
         public string Generate()
         {
-            var result = 0;
-            foreach (var set in _input){
-                var policy = ParsePolicy(set.Policy);
-                var isValid = IsPasswordValid(policy, set.Password);
-                if (isValid)
+            var slopeResults = new List<int>();
+            var slopes = new List<(int Right, int Down)> {
+                new (1, 1),
+                new (3, 1),
+                new (5, 1),
+                new (7, 1),
+                new (1, 2)
+            };
+            foreach (var slope in slopes)
+            {
+                var numberOfTrees = 0;
+                var x = 1;
+                var y = 1;
+                while (x < _input.Count)
                 {
-                    result++;            
-                }
+                    x += slope.Down;
+                    y += slope.Right;
+
+                    var isTree = IsTree(x, y);
+                    //Console.WriteLine(isTree ? " X" : " O");
+                    numberOfTrees += isTree ? 1 : 0;
+                };
+
+                slopeResults.Add(numberOfTrees);
+            }
+
+            double result = 1;
+            foreach (var numberOfTrees in slopeResults)
+            {
+                Console.WriteLine(numberOfTrees);
+
+                result = result * numberOfTrees;
             }
 
             return result.ToString();
         }
 
-        private bool IsPasswordValid(PasswordPolicy policy, string password)
+        private bool IsTree(int x, int y)
         {
-            var occurrences = password.Split(policy.Character).Length - 1;
-            return occurrences >= policy.MinimalOccurrence && occurrences <= policy.MaximumOccurrence;
-        }
-
-        private PasswordPolicy ParsePolicy(string policy)
-        {
-            var result = new PasswordPolicy();
-            var indexOfDash = policy.IndexOf('-');
-            var indexOfSpace = policy.IndexOf(' ');
-            result.MinimalOccurrence = int.Parse(policy.Substring(0, indexOfDash));
-            result.MaximumOccurrence = int.Parse(policy.Substring(indexOfDash + 1, indexOfSpace - indexOfDash - 1));
-            result.Character = char.Parse(policy.Substring(indexOfSpace + 1, 1));
-
-            return result;
-        }
-
-        private class PasswordPolicy
-        {
-            public int MinimalOccurrence { get; set; }
-            public int MaximumOccurrence { get; set; }
-            public char Character { get; set; }
+            var normalizedY = y;
+            var repeatInterval = _input[0].Tiles.Count;
+            while (normalizedY > repeatInterval)
+            {
+                normalizedY -= repeatInterval;
+            }
+            
+            if (x == 3) Console.WriteLine($"Find three at: {x},{normalizedY} ({y})");
+            if (x == 323) Console.WriteLine($"Find three at: {x},{normalizedY} ({y})");
+            return _input[x - 1].Tiles[normalizedY - 1];
         }
     }
 }

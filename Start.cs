@@ -9,6 +9,6 @@ public static class Start
         var generator = new Day3.One(lines);
 
         Console.WriteLine("Answer: " + generator.Generate());
-        Console.ReadLine();
+        //Console.ReadLine();
     }
 }
