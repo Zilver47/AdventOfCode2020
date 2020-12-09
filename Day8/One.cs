@@ -17,7 +17,7 @@ namespace Day8
         public string Generate()
         {
             var positionToSwap = -1;
-            var instructions = _instructions.Clone();
+            var instructions = new List<Instruction>(_instructions.ToArray());
             while (true)
             {
                 var executionResult = Execute(instructions);
@@ -26,7 +26,7 @@ namespace Day8
                     return executionResult.Item2.ToString();
                 }
 
-                instructions = _instructions.Clone();
+                instructions = _instructions.ToArray().ToList();
                 do
                 {
                     positionToSwap++;
