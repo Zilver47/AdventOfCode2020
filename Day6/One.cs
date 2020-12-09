@@ -13,12 +13,12 @@ namespace Day6
             _groups = new LineParser().Parse(input).ToList();
         }
 
-        public string Generate()
+        public long Generate()
         {
-            var result = _groups.Aggregate<Group, double>(0, (current, group) => 
+            var result = _groups.Aggregate<Group, long>(0, (current, group) => 
                 current + group.CountPositiveAnswersByEveryOne());
 
-            return result.ToString();
+            return result;
         }
     }
 }

@@ -25,11 +25,11 @@ namespace Day4
             };
         }
 
-        public string Generate()
+        public long Generate()
         {
             var result = _passwords.Sum(password => IsValid(password) && HasValidValues(password) ? 1 : 0);
 
-            return result.ToString();
+            return result;
         }
 
         private bool IsValid(InputLine password)

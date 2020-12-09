@@ -13,7 +13,7 @@ namespace Day2
             _input = new LineParser().Parse(input);
         }
 
-        public string Generate()
+        public long Generate()
         {
             var result = 0;
             foreach (var set in _input){
@@ -25,7 +25,7 @@ namespace Day2
                 }
             }
 
-            return result.ToString();
+            return result;
         }
 
         private bool IsPasswordValid(PasswordPolicy policy, string password)

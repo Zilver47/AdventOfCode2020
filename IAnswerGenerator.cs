@@ -1,4 +1,4 @@
 ﻿    interface IAnswerGenerator
     {
-        string Generate();
+        long Generate();
     }

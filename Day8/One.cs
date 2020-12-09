@@ -14,7 +14,7 @@ namespace Day8
             _instructions = new LineParser().Parse(input);
         }
 
-        public string Generate()
+        public long Generate()
         {
             var positionToSwap = -1;
             var instructions = new List<Instruction>(_instructions.ToArray());
@@ -23,7 +23,7 @@ namespace Day8
                 var executionResult = Execute(instructions);
                 if (executionResult.Item1)
                 {
-                    return executionResult.Item2.ToString();
+                    return executionResult.Item2;
                 }
 
                 instructions = _instructions.ToArray().ToList();

@@ -14,7 +14,7 @@ public class Day1Two : IAnswerGenerator
         };
     }
 
-    public string Generate()
+    public long Generate()
     {
         foreach (var first in _input)
         {
@@ -23,11 +23,11 @@ public class Day1Two : IAnswerGenerator
             {
                 Console.WriteLine(match.Item2 + "-" + match.Item1 + "-" + first);
 
-                return (match.Item2 * match.Item1 * first).ToString();
+                return match.Item2 * match.Item1 * first;
             }
         }
 
-        return "whoops";
+        return -1;
     }
 
     private Tuple<int, int> FindMatch(int total)

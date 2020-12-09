@@ -13,7 +13,7 @@ namespace Day5
             _seatSpecifications = new LineParser().Parse(input).ToList();
         }
 
-        public string Generate()
+        public long Generate()
         {
             var result = new List<int>();
 
@@ -29,20 +29,20 @@ namespace Day5
             return FindMissingSeatId(searchRange);
         }
 
-        private static string FindMissingSeatId(IReadOnlyList<int> searchRange)
+        private static long FindMissingSeatId(IReadOnlyList<int> searchRange)
         {
             var previousSeatId = searchRange[0] - 1;
             foreach (var seatId in searchRange)
             {
                 if (seatId != previousSeatId + 1)
                 {
-                    return (seatId - 1).ToString();
+                    return (seatId - 1);
                 }
 
                 previousSeatId = seatId;
             }
 
-            return "unknown";
+            return -1;
         }
 
         private (int Row, int Column) FindSeat(SeatSpecification seat)

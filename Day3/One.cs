@@ -21,17 +21,17 @@ namespace Day3
             };
         }
 
-        public string Generate()
+        public long Generate()
         {
             var slopeResults = _slopes.Select(DetermineNumberOfTrees);
 
             var result = MultiplyNumberOfTreesPerScope(slopeResults);
-            return result.ToString();
+            return result;
         }
 
-        private static double MultiplyNumberOfTreesPerScope(IEnumerable<int> results)
+        private static long MultiplyNumberOfTreesPerScope(IEnumerable<int> results)
         {
-            return results.Aggregate<int, double>(1, (current, numberOfTrees) => current * numberOfTrees);
+            return results.Aggregate<int, long>(1, (current, numberOfTrees) => current * numberOfTrees);
         }
 
         private int DetermineNumberOfTrees((int Right, int Down) slope)

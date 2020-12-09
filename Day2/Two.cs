@@ -1013,7 +1013,7 @@ public class Day2Two : IAnswerGenerator
     }
   
 
-    public string Generate()
+    public long Generate()
     {
         var result = 0;
         foreach (var set in _input){
@@ -1025,7 +1025,7 @@ public class Day2Two : IAnswerGenerator
             }
         }
 
-        return result.ToString();
+        return result;
     }
 
     private bool IsPasswordValid(PasswordPolicy policy, string password)

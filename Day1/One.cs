@@ -14,7 +14,7 @@ public class Day1One : IAnswerGenerator
         };
     }
 
-    public string Generate()
+    public long Generate()
     {
         foreach (var item in _input)
         {
@@ -22,10 +22,10 @@ public class Day1One : IAnswerGenerator
             {
                 Console.WriteLine(second + "-" + item);
 
-                return (second * item).ToString();
+                return second * item;
             }
         }
 
-        return "whoops";
+        return -1;
     }
 }

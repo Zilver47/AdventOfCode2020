@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventOfCode.Extensions;
 
 namespace Day9
 {
@@ -14,13 +13,13 @@ namespace Day9
             _data = new LineParser().Parse(input);
         }
 
-        public string Generate()
+        public long Generate()
         {
             var preamble = 25;
             var invalidNumber = GetInvalidNumber(preamble);
 
             var set = FindContiguousSet(invalidNumber);
-            return (set.Min() + set.Max()).ToString();
+            return set.Min() + set.Max();
         }
 
         private long GetInvalidNumber(int preamble)

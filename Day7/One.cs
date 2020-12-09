@@ -13,7 +13,7 @@ namespace Day7
             _rules = new LineParser().Parse(input);
         }
 
-        public string Generate()
+        public long Generate()
         {
             // Part 1
             var result = CountNumberOfBags("shiny gold");
@@ -22,7 +22,7 @@ namespace Day7
             var rule = _rules["shiny gold"];
             result = DeepCount(rule) - 1;
 
-            return result.ToString();
+            return result;
         }
 
         private int CountNumberOfBags(string value)
