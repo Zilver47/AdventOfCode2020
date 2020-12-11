@@ -7,15 +7,9 @@ namespace Day11
 {
     public class LineParser
     {
-        public List<InputLine> Parse(IEnumerable<string> lines)
+        public Map Parse(IEnumerable<string> lines)
         {
-            var result = new List<InputLine>();
-            foreach (var line in lines)
-            {
-                result.Add(new InputLine(line));
-            }
-
-            return result;
+            return new Map(lines.ToArray());
         }
     }
 
