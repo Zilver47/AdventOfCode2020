@@ -45,7 +45,7 @@ namespace Day10
                 var nextOptions = CountNextOptions(adapter);
                 if (nextOptions.Count == 0)
                 {
-                    return total;
+                    Console.Write("Solution 1: " + total);
                 }
 
                 var numberOfPathsToAdapter = cache[adapter];
@@ -65,6 +65,21 @@ namespace Day10
 
                 total = numberOfPathsToAdapter * nextOptions.Count;
             }
+
+            
+            total = 0;
+            foreach (var adapter in _adapters)
+            {
+                var nextOptions = CountNextOptions(adapter);
+                if (nextOptions.Count == 0)
+                {
+                    return total;
+                }
+                
+                total += nextOptions.Count;
+            }
+
+
 
             return total;
         }
