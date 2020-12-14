@@ -6,7 +6,7 @@ public static class Start
     static void Main()
     {
         var lines = File.ReadAllLines("input.txt");
-        var generator = new Day13.Two(lines);
+        var generator = new Day14.Two(lines);
 
         Console.WriteLine("Answer: " + generator.Generate());
         Console.ReadLine();
