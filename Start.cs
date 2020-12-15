@@ -6,9 +6,13 @@ public static class Start
     static void Main()
     {
         var lines = File.ReadAllLines("input.txt");
-        var generator = new Day14.Two(lines);
+        IAnswerGenerator generator = new Day15.One(lines);
 
-        Console.WriteLine("Answer: " + generator.Generate());
+        Console.WriteLine("Answer 1: " + generator.Generate());
+        
+        generator = new Day15.Two(lines);
+
+        Console.WriteLine("Answer 2: " + generator.Generate());
         Console.ReadLine();
     }
 }
