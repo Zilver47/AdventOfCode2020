@@ -6,11 +6,11 @@ public static class Start
     static void Main()
     {
         var lines = File.ReadAllLines("input.txt");
-        IAnswerGenerator generator = new Day15.One(lines);
+        IAnswerGenerator generator = new Day16.One(lines);
 
         Console.WriteLine("Answer 1: " + generator.Generate());
         
-        generator = new Day15.Two(lines);
+        generator = new Day16.Two(lines);
 
         Console.WriteLine("Answer 2: " + generator.Generate());
         Console.ReadLine();
