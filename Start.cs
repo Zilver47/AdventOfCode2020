@@ -11,14 +11,14 @@ public static class Start
         var timer = new Stopwatch();
         timer.Start();
         var lines = File.ReadAllLines("input.txt");
-        IAnswerGenerator generator = new Day20.One(lines);
+        IAnswerGenerator generator = new Day22.One(lines);
         Console.WriteLine("Answer 1: " + generator.Generate());
 
         timer.Stop();
         Console.WriteLine($"Verstreken tijd: {timer.Elapsed.TotalSeconds}");
 
         timer.Restart();
-        generator = new Day20.Two(lines);
+        generator = new Day22.Two(lines);
 
         Console.WriteLine("Answer 2: " + generator.Generate());
         
